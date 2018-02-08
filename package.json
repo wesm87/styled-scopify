@@ -1,10 +1,14 @@
 {
   "name": "styled-scopify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "@Losant",
   "license": "MIT",
   "main": "lib/index.js",
   "files": "lib/**/*.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Losant/styled-scopify.git"
+  },
   "scripts": {
     "build": "babel src --out-dir lib --no-comments",
     "prepublish": "in-publish && yarn build || not-in-publish",
@@ -17,5 +21,8 @@
     "babel-plugin-transform-imports": "^1.4.1",
     "babel-preset-env": "^1.6.1",
     "in-publish": "^2.0.0"
+  },
+  "dependencies": {
+    "styled-transform-proxy": "^0.0.1"
   }
 }
