@@ -1,6 +1,4 @@
-import { curry } from 'ramda';
-
-const wrapRulesWithScope = curry((scopeSelector, strings) => {
+const wrapRulesWithScope = (scopeSelector, strings) => {
   const rules = [...strings];
   const rulesPrefix = `\n${scopeSelector} & {`;
   const rulesSuffix = `}\n`;
@@ -24,12 +22,13 @@ const wrapRulesWithScope = curry((scopeSelector, strings) => {
   rules[lastRuleIndex] = `${lastRule}${rulesSuffix}`;
 
   return rules;
-});
+};
 
-export const scopify = curry((scopeSelector, fn) =>
-  (strings, ...interpolations) => {
-    const wrappedRules = wrapRulesWithScope(scopeSelector, strings);
+export const scopify = (scopeSelector) => {
+  const scopifiedTemplateFn = (strings, ...interpolations) => [
+    wrapRulesWithScope(scopeSelector, strings),
+    ...interpolations,
+  ];
 
-    return fn(wrappedRules, ...interpolations);
-  }
-);
+  return scopifiedTemplateFn;
+};
