@@ -1,10 +1,10 @@
 import styledTransformProxy from 'styled-transform-proxy';
 import { curry } from 'ramda';
 
-import { scopify } from './utils';
+import scopifyTemplate from './scopify-template';
 
 const styledScopify = curry((scopeSelector, styled) =>
-  styledTransformProxy(scopify(scopeSelector), styled)
+  styledTransformProxy(scopifyTemplate(scopeSelector), styled)
 );
 
 export default styledScopify;

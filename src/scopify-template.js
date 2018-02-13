@@ -24,7 +24,7 @@ const wrapRulesWithScope = (scopeSelector, strings) => {
   return rules;
 };
 
-export const scopify = (scopeSelector) => {
+const scopifyTemplate = (scopeSelector) => {
   const scopifiedTemplateFn = (strings, ...interpolations) => [
     wrapRulesWithScope(scopeSelector, strings),
     ...interpolations,
@@ -32,3 +32,5 @@ export const scopify = (scopeSelector) => {
 
   return scopifiedTemplateFn;
 };
+
+export default scopifyTemplate;
