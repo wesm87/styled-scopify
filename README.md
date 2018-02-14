@@ -5,6 +5,16 @@ selector. This is useful if you use something like the `postcss-scopify` plugin.
 wrapper function is curried and accepts two arguments - a CSS selector string to use as
 the scope and the original `styled` function - and returns the wrapped `styled` function.
 
+## Install
+
+```sh
+# Yarn
+yarn add styled-scopify
+
+# npm
+npm install --save styled-scopify
+```
+
 ## Type Definitions
 
 ```
