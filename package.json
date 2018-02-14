@@ -1,6 +1,6 @@
 {
   "name": "styled-scopify",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A wrapper function for styled-components that scopes all of your CSS rules to a root selector",
   "author": "@Losant",
   "license": "MIT",
