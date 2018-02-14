@@ -38,7 +38,7 @@ const Foo = styled.span`
   color: #333;
 `;
 
-// Without this helper function you'd have to do this for every component:
+// Without this wrapper function you'd have to do this for every component:
 const Bar = styled.div`
   #root & {
     ...
