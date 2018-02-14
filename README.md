@@ -1,10 +1,9 @@
 # styled-scopify
 
-A helper function for styled-components that wraps the main `styled` function and scopes
-all of your CSS rules to a root selector. This is useful if you use something like the
-`postcss-scopify` plugin. The helper function is curried and accepts two arguments - a
-CSS selector string to use as the scope and the original `styled` function - and returns
-the wrapped `styled` function.
+A wrapper function for styled-components that scopes all of your CSS rules to a root
+selector. This is useful if you use something like the `postcss-scopify` plugin. The
+wrapper function is curried and accepts two arguments - a CSS selector string to use as
+the scope and the original `styled` function - and returns the wrapped `styled` function.
 
 ## Type Definitions
 
