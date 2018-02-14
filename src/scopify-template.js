@@ -1,6 +1,10 @@
-const wrapRulesWithScope = (scopeSelector, strings) => {
+// @flow
+
+type ProxyFn = (Array<string>, ...*) => Array<Array<string> | *>;
+
+const scopifyStrings = (selector: string, strings: Array<string>): Array<string> => {
   const rules = [...strings];
-  const rulesPrefix = `\n${scopeSelector} & {`;
+  const rulesPrefix = `\n${selector} & {`;
   const rulesSuffix = `}\n`;
 
   const firstRule = rules[0];
@@ -24,9 +28,9 @@ const wrapRulesWithScope = (scopeSelector, strings) => {
   return rules;
 };
 
-const scopifyTemplate = (scopeSelector) => {
+const scopifyTemplate = (scopeSelector: string): ProxyFn => {
   const scopifiedTemplateFn = (strings, ...interpolations) => [
-    wrapRulesWithScope(scopeSelector, strings),
+    scopifyStrings(scopeSelector, strings),
     ...interpolations,
   ];
 
