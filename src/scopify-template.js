@@ -1,6 +1,8 @@
 // @flow
 
-type ProxyFn = (Array<string>, ...*) => Array<Array<string> | *>;
+import { pipe, update } from 'ramda';
+
+type ProxyFn = (Array<string>, ...*) => Array<*>;
 
 const scopifyStrings = (selector: string, strings: Array<string>): Array<string> => {
   const rules = [...strings];
@@ -14,18 +16,16 @@ const scopifyStrings = (selector: string, strings: Array<string>): Array<string>
       return rules;
     }
 
-    rules[0] = `${rulesPrefix}${firstRule}${rulesSuffix}`;
-
-    return rules;
+    return [`${rulesPrefix}${firstRule}${rulesSuffix}`];
   }
 
   const lastRuleIndex = rules.length - 1;
   const lastRule = rules[lastRuleIndex];
 
-  rules[0] = `${rulesPrefix}${firstRule}`;
-  rules[lastRuleIndex] = `${lastRule}${rulesSuffix}`;
-
-  return rules;
+  return pipe(
+    update(0, `${rulesPrefix}${firstRule}`),
+    update(lastRuleIndex, `${lastRule}${rulesSuffix}`),
+  )(rules);
 };
 
 const scopifyTemplate = (scopeSelector: string): ProxyFn => {
