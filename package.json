@@ -1,12 +1,14 @@
 {
   "name": "styled-scopify",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "author": "Wes Moberly <github.wes@mailhero.io>",
   "license": "MIT",
   "description": "A wrapper function for styled-components that scopes all of your CSS rules to a root selector",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": ["lib/**/*.js"],
+  "files": [
+    "lib/**/*.js"
+  ],
   "repository": "https://github.com/wesm87/styled-scopify.git",
   "scripts": {
     "build:types": "tsc",
