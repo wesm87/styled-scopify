@@ -1,11 +1,9 @@
-// @flow
-
 import styledTransformProxy from 'styled-transform-proxy'
 import { curry, compose, update } from 'ramda'
 
-type ProxyFn = (Array<string>, ...*) => Array<*>;
+type ProxyFn = (strings: string[], ...interpolations: any[]) => any[];
 
-const scopifyStrings = (selector: string, strings: Array<string>): Array<string> => {
+const scopifyStrings = (selector: string, strings: string[]): string[] => {
   const rules = [...strings]
   const rulesPrefix = `\n${selector} & {`
   const rulesSuffix = `}\n`
@@ -31,7 +29,7 @@ const scopifyStrings = (selector: string, strings: Array<string>): Array<string>
 }
 
 const scopifyTemplate = (scopeSelector: string): ProxyFn => {
-  const scopifiedTemplateFn = (strings, ...interpolations) => [
+  const scopifiedTemplateFn = (strings: string[], ...interpolations: any[]) => [
     scopifyStrings(scopeSelector, strings),
     ...interpolations,
   ]
@@ -40,7 +38,7 @@ const scopifyTemplate = (scopeSelector: string): ProxyFn => {
 }
 
 const styledScopify = curry(
-  (selector: string, styled: *) =>
+  (selector: string, styled: any) =>
     styledTransformProxy(scopifyTemplate(selector), styled)
 )
 
